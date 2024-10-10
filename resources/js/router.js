@@ -34,6 +34,25 @@ const routes = [
         component: () => import('./components/AboutComponent.vue'),
         name: 'about',
 
+    },
+    {
+        path: '/register',  // Используем строку для пути
+        component: () => import('./components/RegisterComponent.vue'),
+        name: 'register',
+
+    },
+    {
+        path: '/login',  // Используем строку для пути
+        component: () => import('./components/LoginComponent.vue'),
+        name: 'login',
+
+    },
+
+    {
+        path: '/dashboard',  // Используем строку для пути
+        component: () => import('./components/Dashboard.vue'),
+        name: 'dashboard',
+
     }
 
 
@@ -44,4 +63,12 @@ const router = createRouter({
     routes,
 });
 
+
+router.beforeEach((to, from, next) => {
+    if (to.meta.requiresAuth && !localStorage.getItem('user')) {
+        next({ path: '/login' });
+    } else {
+        next();
+    }
+});
 export default router;

@@ -1,9 +1,9 @@
 <template>
 
-    <v-app>
-        <!-- Navigation Drawer -->
+<!--    <v-app>
+        &lt;!&ndash; Navigation Drawer &ndash;&gt;
         <v-navigation-drawer app permanent width="300" color="white">
-            <!-- Верхняя часть меню -->
+            &lt;!&ndash; Верхняя часть меню &ndash;&gt;
             <v-list-item>
                 <v-list-item-content class="d-flex align-center">
                     <v-icon left>mdi-account-group</v-icon>
@@ -16,54 +16,54 @@
             <v-divider></v-divider>
 
 
-            <!-- Элементы бокового меню -->
+            &lt;!&ndash; Элементы бокового меню &ndash;&gt;
             <v-list dense>
-                <v-list-item link>
+                <v-list-item  :to="{ name: 'about' }" link>
                     <v-list-item-content>
                         <v-list-item-title class="d-flex align-center">
-                            <router-link :to="{ name: 'about' }"   class="d-flex align-center  text-black text-decoration-none">
+
                             <v-icon  class="mr-7" left>mdi-cog</v-icon>
                             Возможности приложения
-                            </router-link>
+
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
                 <v-divider></v-divider>
 
-                <v-list-item link>
+                <v-list-item :to="{ name: 'index' }" link>
                     <v-list-item-content>
                         <v-list-item-title class="d-flex align-center">
-                            <router-link :to="{ name: 'index' }"   active-class="active-link"  class="d-flex align-center  text-black text-decoration-none">
+
                                 <v-icon class="mr-7" left>mdi-bag-checked</v-icon>
                                 INDEX
-                            </router-link>
+
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
                 <v-divider></v-divider>
                 <v-list-item-subtitle class="mt-4 mb-3">Настройки</v-list-item-subtitle>
-                <v-list-item link>
+                <v-list-item :to="{ name: 'tag' }" link>
 
                     <v-list-item-content>
                         <v-list-item-title class="d-flex align-center ">
-                            <router-link :to="{ name: 'tag' }"   class="d-flex align-center  text-black text-decoration-none">
+
                                 <v-icon   class="mr-8" left>mdi-cable-data</v-icon>
                                 TAG
-                            </router-link>
+
 
                         </v-list-item-title>
                     </v-list-item-content>
                 </v-list-item>
 
-                <v-list-item link>
+                <v-list-item  :to="{ name: 'contacts' }" link>
 
                     <v-list-item-content>
                         <v-list-item-title class="d-flex align-center">
-                            <router-link :to="{ name: 'contacts' }"   class="d-flex align-center  text-black text-decoration-none">
+
                                 <v-icon class="mr-8" left>mdi-check-circle</v-icon>
                                 CONTACTS
-                            </router-link>
+
 
                         </v-list-item-title>
                     </v-list-item-content>
@@ -122,7 +122,7 @@
 
             <v-divider></v-divider>
 
-            <!-- Выбрать магазин -->
+            &lt;!&ndash; Выбрать магазин &ndash;&gt;
             <v-list-item link>
 
                 <v-list-item-content>
@@ -137,14 +137,16 @@
         <v-main>
             <router-view></router-view>
         </v-main>
-    </v-app>
-
+    </v-app>-->
+<router-view></router-view>
 
 </template>
 
 <script>
 export default {
-    name: "AppComponent"
+    name: "AppComponent",
+
+
 }
 </script>
 

@@ -34,6 +34,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/lib/axios.js");
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "ShowComponent",
   data: function data() {
@@ -59,7 +61,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     getProduct: function getProduct() {
       var _this = this;
-      axios.get("/api/card/get/".concat(this.$route.params.id)) // Запрос к API для получения данных
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].get("/api/card/get/".concat(this.$route.params.id)) // Запрос к API для получения данных
       .then(function (res) {
         _this.product = res.data; // Сохраняем данные о товаре
         _this.name = _this.product.name; // Заполнение поля названия
@@ -77,13 +79,13 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('name', this.name);
       formData.append('description', this.description);
       if (this.imageFile) {
-        formData.append('file', this.imageFile);
+        formData.append('urlPhoto', this.imageFile);
       }
 
       /*console.log('=============================')
       console.log(formData)*/
 
-      axios.put("/api/card/put/".concat(id), formData, {
+      axios__WEBPACK_IMPORTED_MODULE_0__["default"].put("/api/card/put/".concat(id), formData, {
         headers: {
           'Content-Type': 'multipart/form-data' // Указываем заголовок
         }

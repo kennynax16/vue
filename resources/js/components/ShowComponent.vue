@@ -69,7 +69,7 @@
     </div>
 </template>
 <script>
-
+import axios from "axios";
 export default {
     name: "ShowComponent",
 
@@ -113,7 +113,7 @@ export default {
             formData.append('description', this.description);
 
             if (this.imageFile) {
-                formData.append('file', this.imageFile);
+                formData.append('urlPhoto', this.imageFile);
             }
 
             /*console.log('=============================')
