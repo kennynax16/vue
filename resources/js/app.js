@@ -15,7 +15,15 @@ import './bootstrap';
 
 // Настройка Axios
 axios.defaults.withCredentials = true; // Убедитесь, что cookie отправляются с запросами
-axios.defaults.baseURL = 'https://vue.loc/'; // Замените на ваш реальный домен
+axios.defaults.baseURL = 'https://vue.loc/'; //  ваш реальный домен
+axios.interceptors.request.use((config) => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+});
+
 
 
 // Создаем экземпляр Vue и подключаем роутер
