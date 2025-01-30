@@ -10,8 +10,8 @@ class CardController extends Controller
 {
     public function index()
     {
-        $data = Card::all();
-        return $data;
+        $data = Card::paginate(9);
+        return response()->json($data);
     }
 
 

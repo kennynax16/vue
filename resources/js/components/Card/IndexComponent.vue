@@ -2,7 +2,13 @@
 
     <v-container>
         <v-row>
-            <card-component v-for="item in card" :item="item"></card-component>
+            <card-component v-for="item in cards" :item="item"></card-component>
+            <v-btn @click="getProduct(prevPage)" :disabled="!prevPage">Назад</v-btn>
+            <v-btn @click="getProduct(nextPage)" :disabled="!nextPage">Вперёд</v-btn>
+
+
+
+
         </v-row>
     </v-container>
 </template>
@@ -27,7 +33,9 @@ export default {
 
     data() {
         return {
-            card: null,
+            cards: null,
+            nextPage: null,  // Ссылка на следующую страницу
+            prevPage: null   // Ссылка на предыдущую страницу
 
         }
     },
@@ -36,12 +44,15 @@ export default {
         this.getProduct()
     },
     methods: {
-        getProduct() {
-            axios.get('/api/card/get')
-                .then(res => {
-                    this.card = res.data
-                })
-        },
+        getProduct(url = "/api/card/get") {
+            axios.get(url).then(res => {
+                this.cards = res.data.data; // Данные карточек
+                this.nextPage = res.data.next_page_url; // Ссылка на следующую страницу
+                this.prevPage = res.data.prev_page_url; // Ссылка на предыдущую страницу
+            }).catch(error => {
+                console.error("Ошибка загрузки данных:", error);
+            });
+        }
     }
 
 }
