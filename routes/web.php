@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AppController;
 
 
 
 
-Route::get('/{any}', \App\Http\Controllers\appController::class)->where('any', '.*');;
+Route::get('/{any}', AppController::class)->where('any', '.*');;

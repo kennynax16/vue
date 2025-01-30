@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\card;
+namespace App\Http\Requests\Card;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateRequest extends FormRequest
+class updateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,9 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=> '',
-            'description'=> '',
-            'urlPhoto'=> 'nullable|image|max:2048',
+            'name' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'urlPhoto' => 'nullable|file|image|max:2048',
         ];
     }
 }

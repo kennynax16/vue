@@ -17,6 +17,7 @@
 
 <script>
 import axios from 'axios';
+import { user, fetchUser } from '../../auth';
 
 export default {
     data() {
@@ -39,6 +40,7 @@ export default {
 
                 // Сохраняем токен в localStorage
                 localStorage.setItem('authToken', response.data.token);
+                await fetchUser(); // Получаем данные пользователя после входа
 
                 // Перенаправляем на защищенную страницу
                 this.$router.push('/dashboard');

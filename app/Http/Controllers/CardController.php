@@ -1,19 +1,29 @@
 <?php
-namespace App\Http\Controllers\card;
 
-use App\Http\Controllers\Controller;
+namespace App\Http\Controllers;
+
+use App\Http\Requests\Card\updateRequest;
 use App\Models\Card;
 use Illuminate\Http\Request;
 
-class UpdateController extends Controller
+class CardController extends Controller
 {
-    public function __invoke(Request $request, Card $card)
+    public function index()
     {
-        $data = $request->validate([
-            'name' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'urlPhoto' => 'nullable|file|image|max:2048',
-        ]);
+        $data = Card::all();
+        return $data;
+    }
+
+
+    public function show(Card $card)
+    {
+        return $card;
+    }
+
+
+    public function update(updateRequest $request, Card $card)
+    {
+        $data = $request->validated();
 
         if ($request->hasFile('urlPhoto')) {
             $fileName = time() . '.' . $request->file('urlPhoto')->getClientOriginalExtension();
@@ -25,4 +35,5 @@ class UpdateController extends Controller
 
         return response()->json(['card' => $card]);
     }
+
 }
